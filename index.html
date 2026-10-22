@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f6">
+
+<title>Study Bloom Morocco 🎀</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+  --pink: #ff86b7;
+  --pink2: #ffe2ef;
+  --purple: #c5a3ff;
+  --text: #624c65;
+  --muted: #a891ac;
+  --border: #f8d9e9;
+  --bg: #fff8fc;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 18px 14px 28px;
+  min-height: 100vh;
+  font-family: Cairo, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 10%, #ffe3ef, transparent 30%),
+    radial-gradient(circle at 90% 80%, #eae0ff, transparent 35%),
+    var(--bg);
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  transition: .2s;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 42px;
+  animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #e76da4;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card {
+  background: #ffffffeb;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 9px 28px #e7b5d322;
+}
+
+/* HERO */
+
+.banner {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  min-height: 120px;
+  margin-bottom: 18px;
+  padding: 9px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #ffe0ed, #f0e5ff);
+}
+
+.banner img {
+  width: 112px;
+  min-width: 112px;
+  align-self: stretch;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 13px;
+  display: block;
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner h2 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.banner p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* SUBJECT PICKER */
+
+.section-title {
+  font-size: 14px;
+  font-weight: 800;
+  margin: 16px 0 10px;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.subject {
+  --accent: #ff86b7;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 76px;
+  padding: 11px;
+
+  border: 1.5px solid #f3e4ef;
+  border-radius: 17px;
+
+  background: white;
+  color: var(--text);
+  text-align: right;
+}
+
+.subject::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+  opacity: .45;
+}
+
+.subject.selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, white);
+  box-shadow: 0 5px 15px #e4b1d633;
+}
+
+.subject.selected::before {
+  content: "✓";
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.subject-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--accent) 16%, white);
+  font-size: 22px;
+}
+
+.subject-info {
+  min-width: 0;
+}
+
+.subject-name {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.subject-en {
+  font-size: 9px;
+  color: var(--muted);
+  direction: ltr;
+  text-align: right;
+}
+
+/* TIME PICKER */
+
+.time-box {
+  background: #fff6fb;
+  border: 1px solid #f8e0ed;
+  border-radius: 18px;
+  padding: 13px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.time-field {
+  min-width: 0;
+  text-align: center;
+}
+
+.time-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.time-field input {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  padding: 12px 2px;
+  background: white;
+  border: 1px solid #f2d7e7;
+  border-radius: 13px;
+  outline: none;
+  color: var(--text);
+}
+
+.time-field input:focus {
+  border-color: var(--pink);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.preset {
+  flex: 1;
+  min-width: 65px;
+  padding: 8px 5px;
+  background: white;
+  border: 1px solid #f4d9e9;
+  border-radius: 11px;
+  font-size: 11px;
+  color: #c66e9a;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 17px;
+  padding: 13px;
+  border-radius: 15px;
+  background: linear-gradient(100deg, #ff83b4, #c49aff);
+  box-shadow: 0 6px 15px #e8a1ca55;
+  color: white;
+  font-weight: 800;
+}
+
+.quote {
+  text-align: center;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+}
+
+/* TIMER */
+
+.timer-card {
+  display: none;
+  text-align: center;
+}
+
+.timer-card.show {
+  display: block;
+  animation: appear .4s ease;
+}
+
+.study-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #e76da4;
+}
+
+.timer-circle {
+  width: 245px;
+  height: 245px;
+  max-width: 100%;
+  margin: 20px auto;
+
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--pink) var(--progress, 100%),
+    #ffe5f0 0
+  );
+
+  box-shadow: 0 8px 25px #efa4ca30;
+}
+
+.timer-circle::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  background: white;
+  border-radius: 50%;
+}
+
+.timer-content {
+  z-index: 1;
+}
+
+.time {
+  direction: ltr;
+  font-size: 38px;
+  font-weight: 800;
+  color: #dc6e9f;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+}
+
+.timer-caption {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.progress-text {
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controls button {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 3px;
+  border-radius: 12px;
+  background: #fff0f6;
+  color: #c66e9a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.controls .pause {
+  background: #f0e8ff;
+  color: #9870d5;
+}
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: #c2a4bd;
+  padding: 8px;
+}
+
+/* CELEBRATION */
+
+.celebration {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
+  background: #fff4faed;
+  backdrop-filter: blur(8px);
+}
+
+.celebration.show {
+  display: flex;
+}
+
+.celebrate-card {
+  width: 100%;
+  max-width: 350px;
+  padding: 23px 20px;
+  text-align: center;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  box-shadow: 0 15px 60px #dca0c944;
+  animation: pop .5s cubic-bezier(.2,1.7,.5,1);
+}
+
+.trophy {
+  font-size: 56px;
+  animation: float 2s infinite;
+}
+
+.celebrate-card h2 {
+  font-size: 23px;
+  color: #e76da4;
+  margin: 5px 0;
+}
+
+.celebrate-card p {
+  font-size: 12px;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.water-glass {
+  position: relative;
+  overflow: hidden;
+  width: 86px;
+  height: 102px;
+  margin: 14px auto;
+  border: 4px solid #a3d9ff;
+  border-top: 0;
+  border-radius: 8px 8px 22px 22px;
+  background: #f0faff;
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 65%;
+  background: linear-gradient(#a7e4ff, #70c8fa);
+  border-radius: 40% 40% 0 0;
+  animation: water 2s ease-in-out infinite alternate;
+}
+
+.water-face {
+  position: absolute;
+  z-index: 2;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  font-size: 21px;
+  color: #347ba8;
+}
+
+.water-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #78b8e6;
+}
+
+.again {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border-radius: 14px;
+  background: linear-gradient(100deg, #ff83b4, #c49aff);
+  color: white;
+  font-weight: 800;
+}
+
+.confetti {
+  position: fixed;
+  top: -30px;
+  z-index: 110;
+  pointer-events: none;
+  animation: fall 3.5s linear forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes water {
+  from { height: 58%; }
+  to { height: 70%; }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: .2;
+  }
+}
+
+/* SMALL SCREENS */
+
+@media (max-width: 350px) {
+  .card { padding: 13px; }
+  .banner img { width: 90px; min-width: 90px; }
+  .subject { gap: 6px; padding: 8px; }
+  .subject-icon { width: 34px; min-width: 34px; height: 34px; }
+  .subject-name { font-size: 10px; }
+  .time { font-size: 31px; }
+  .timer-circle { width: 215px; height: 215px; }
+}
+
+/* LANDSCAPE */
+
+@media (orientation: landscape) and (max-height: 600px) {
+  body { padding: 8px 16px; }
+  .container { max-width: 900px; }
+
+  header { margin: 0 0 8px; }
+  .logo { display: none; }
+  h1 { font-size: 21px; }
+  .subtitle { font-size: 10px; }
+
+  .card {
+    padding: 12px 16px;
+    margin-bottom: 9px;
+    border-radius: 20px;
+  }
+
+  #setup {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 9px 18px;
+    align-items: start;
+  }
+
+  .banner {
+    grid-column: 1 / -1;
+    min-height: 90px;
+    max-height: 110px;
+    margin: 0;
+    padding: 7px;
+  }
+
+  .banner img {
+    width: 120px;
+    min-width: 120px;
+    height: auto;
+    align-self: stretch;
+    object-fit: cover;
+  }
+
+  .banner h2 { font-size: 14px; }
+  .banner p { font-size: 10px; }
+
+  #setup > .section-title {
+    margin: 0;
+  }
+
+  .subject-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .subject {
+    min-height: 57px;
+    padding: 6px;
+    gap: 5px;
+  }
+
+  .subject-icon {
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    font-size: 16px;
+  }
+
+  .subject-name { font-size: 9px; }
+  .subject-en { display: none; }
+
+  .time-box { padding: 8px; }
+  .time-field label { font-size: 10px; }
+  .time-field input { padding: 7px 2px; }
+
+  .presets { margin-top: 6px; }
+  .preset { padding: 5px 2px; font-size: 9px; }
+
+  .primary {
+    margin-top: 5px;
+    padding: 9px;
+  }
+
+  .quote {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .footer { padding: 3px; }
+
+  .timer-card.show {
+    display: grid;
+    grid-template-columns: minmax(180px, .8fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 5px 20px;
+    align-items: center;
+  }
+
+  .study-label {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .timer-circle {
+    grid-column: 1;
+    grid-row: 2;
+    width: 175px;
+    height: 175px;
+    margin: 4px auto;
+  }
+
+  .timer-circle::before { inset: 9px; }
+  .time { font-size: 29px; }
+  .timer-caption { font-size: 10px; }
+
+  .progress-text {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+
+  .controls {
+    grid-column: 2;
+    grid-row: 2;
+    flex-direction: column;
+  }
+
+  .controls button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .timer-card .quote {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .celebrate-card {
+    max-width: 560px;
+    padding: 12px 20px;
+  }
+
+  .trophy { font-size: 35px; }
+  .celebrate-card h2 { font-size: 19px; }
+  .celebrate-card p { margin: 4px; }
+  .water-glass { width: 62px; height: 72px; margin: 7px auto; }
+  .water-face { top: 25px; font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+<header>
+  <div class="logo">🎀</div>
+  <h1>Study Bloom</h1>
+  <div class="subtitle">
+    FOR MY GIRLL BASMMA o(╥﹏╥)o 
+  </div>
+</header>
+
+<section class="card" id="setup">
+
+  <div class="banner">
+    <img
+  src="basma.jpg"
+  alt="صورة جميلة 🎀"
+>
+
+    <div class="banner-text">
+      <h2>Hii babbbe (つ≧▽≦)つ </h2><p>
+        اختاري المادة والوقت،
+        وخلي جلسة اليوم بداية إنجاز جديد 💗
+      </p>
+    </div>
+  </div>
+
+  <div class="section-title">
+    📚 اختاري المادة الدراسية
+  </div>
+
+  <div class="subject-grid" id="subjectGrid">
+
+    <button class="subject selected"
+      data-name="الرياضيات" style="--accent:#ff83b4">
+      <span class="subject-icon">➗</span>
+      <span class="subject-info">
+        <span class="subject-name">الرياضيات</span>
+        <span class="subject-en">Mathématiques</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="الفيزياء والكيمياء" style="--accent:#8c9cff">
+      <span class="subject-icon">⚗️</span>
+      <span class="subject-info">
+        <span class="subject-name">الفيزياء والكيمياء</span>
+        <span class="subject-en">Physique-Chimie</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="علوم الحياة والأرض" style="--accent:#71cfa5">
+      <span class="subject-icon">🌱</span>
+      <span class="subject-info">
+        <span class="subject-name">علوم الحياة والأرض</span>
+        <span class="subject-en">SVT</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="اللغة العربية" style="--accent:#ffad76">
+      <span class="subject-icon">📖</span>
+      <span class="subject-info">
+        <span class="subject-name">اللغة العربية</span>
+        <span class="subject-en">العربية</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="اللغة الفرنسية" style="--accent:#75baff">
+      <span class="subject-icon">🇫🇷</span>
+      <span class="subject-info">
+        <span class="subject-name">اللغة الفرنسية</span>
+        <span class="subject-en">Français</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="اللغة الإنجليزية" style="--accent:#bd91f8">
+      <span class="subject-icon">🇬🇧</span>
+      <span class="subject-info">
+        <span class="subject-name">اللغة الإنجليزية</span>
+        <span class="subject-en">English</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="الاجتماعيات" style="--accent:#df9b79">
+      <span class="subject-icon">🌍</span>
+      <span class="subject-info">
+        <span class="subject-name">الاجتماعيات</span>
+        <span class="subject-en">تاريخ وجغرافيا</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="التربية الإسلامية" style="--accent:#62c6b1">
+      <span class="subject-icon">🌙</span>
+      <span class="subject-info">
+        <span class="subject-name">التربية الإسلامية</span>
+        <span class="subject-en">التربية الإسلامية</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="التكنولوجيا" style="--accent:#91a0c8">
+      <span class="subject-icon">⚙️</span>
+      <span class="subject-info">
+        <span class="subject-name">التكنولوجيا</span>
+        <span class="subject-en">Technologie</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="المعلوميات" style="--accent:#70b5c5">
+      <span class="subject-icon">💻</span>
+      <span class="subject-info">
+        <span class="subject-name">المعلوميات</span>
+        <span class="subject-en">Informatique</span>
+      </span>
+    </button>
+
+    <button class="subject"
+      data-name="مادة اخرى ฅ^•ﻌ•^ฅ " style="--accent:#f09bc8">
+      <span class="subject-icon">🎨</span>
+      <span class="subject-info">
+        <span class="subject-name">التربية التشكيلية</span>
+        <span class="subject-en">Arts plastiques</span>
+      </span>
+    </button>
+
+
+  </div>
+
+  <div class="section-title">
+    ⏰ حددي مدة الدراسة
+  </div>
+
+  <div class="time-box">
+
+    <div class="time-grid">
+
+      <div class="time-field">
+        <label for="hours">الساعات</label>
+        <input id="hours" type="number"
+          min="0" max="23" step="1"
+          value="0" inputmode="numeric">
+      </div>
+
+      <div class="time-field">
+        <label for="minutes">الدقائق</label>
+        <input id="minutes" type="number"
+          min="0" max="59" step="1"
+          value="25" inputmode="numeric">
+      </div>
+
+      <div class="time-field">
+        <label for="seconds">الثواني</label>
+        <input id="seconds" type="number"
+          min="0" max="59" step="1"
+          value="0" inputmode="numeric">
+      </div>
+
+    </div>
+
+    <div class="presets">
+      <button class="preset" data-time="300">5 دقائق</button>
+      <button class="preset" data-time="900">15 دقيقة</button>
+      <button class="preset" data-time="1500">25 دقيقة</button>
+      <button class="preset" data-time="2700">45 دقيقة</button>
+    </div>
+
+  </div>
+
+  <button class="primary" id="start">
+    يلا نبدأ الدراسة 🎀
+  </button>
+
+  <div class="quote">
+    🌸 كل خطوة صغيرة تقربك من حلمك.
+  </div>
+
+</section>
+
+<!-- TIMER -->
+
+<section class="card timer-card" id="timerCard">
+
+  <div class="study-label" id="activeSubject">
+    ➗ الرياضيات
+  </div>
+
+  <div class="timer-circle" id="circle">
+
+    <div class="timer-content">
+      <div class="time" id="time">00:25:00</div>
+      <div class="timer-caption">ركزي، أنتِ تقدرين! 💗</div>
+    </div>
+
+  </div>
+
+  <div class="progress-text" id="progressText">
+    كل دقيقة تقربك من هدفك 🌸
+  </div>
+
+  <div class="controls">
+    <button class="pause" id="pause">⏸ إيقاف مؤقت</button>
+    <button id="reset">↻ إعادة</button>
+    <button id="back">← رجوع</button>
+  </div>
+
+  <div class="quote">
+    📵 أبعدي المشتتات وخذي نفسًا عميقًا!
+  </div>
+
+</section>
+
+<div class="footer">
+  Made with 💗 for your dreams · Morocco 🇲🇦
+</div>
+
+</main>
+
+<!-- COMPLETION -->
+
+<div class="celebration" id="celebration"
+  role="dialog" aria-modal="true">
+
+  <div class="celebrate-card">
+
+    <div class="trophy">🏆</div>
+
+    <h2>برافو عليكِ! 🎉</h2>
+
+    <p id="congrats">
+      أكملتِ جلسة الدراسة بنجاح! 💗
+    </p>
+
+    <div class="water-glass">
+      <div class="water"></div>
+      <div class="water-face">•ᴗ•</div>
+    </div>
+
+    <div class="water-label">وقت الماء 💧</div>
+
+    <p>خذي استراحة قصيرة، تستحقينها يا بطلة! 🌷</p>
+
+    <button class="again" id="newSession">
+      جلسة جديدة 🎀
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+let selectedSubject = 'الرياضيات';
+let totalSeconds = 0;
+let remaining = 0;
+let endTime = 0;
+let interval = null;
+let paused = false;
+let finished = false;
+
+const subjectButtons =
+  document.querySelectorAll('.subject');
+
+subjectButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    subjectButtons.forEach(item => {
+      item.classList.remove('selected');
+      item.setAttribute('aria-pressed', 'false');
+    });
+
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed', 'true');
+
+    selectedSubject = button.dataset.name;
+  });
+
+  button.setAttribute(
+    'aria-pressed',
+    button.classList.contains('selected') ? 'true' : 'false'
+  );
+});
+
+/* QUICK TIME PRESETS */
+
+document.querySelectorAll('.preset').forEach(button => {
+  button.addEventListener('click', () => {
+    const seconds = Number(button.dataset.time);
+
+    $('hours').value = Math.floor(seconds / 3600);
+    $('minutes').value = Math.floor((seconds % 3600) / 60);
+    $('seconds').value = seconds % 60;
+  });
+});
+
+/* TIME FORMATTING */
+
+function formatTime(value) {
+  const h = Math.floor(value / 3600);
+  const m = Math.floor((value % 3600) / 60);
+  const s = value % 60;
+
+  const pad = n => String(n).padStart(2, '0');
+
+  return `${pad(h)}:${pad(m)}:${pad(s)}`;
+}
+
+function updateDisplay() {
+  $('time').textContent = formatTime(remaining);
+
+  const progress = totalSeconds > 0
+    ? remaining / totalSeconds * 100
+    : 0;
+
+  $('circle').style.setProperty(
+    '--progress',
+    progress + '%'
+  );
+
+  const percent = totalSeconds > 0
+    ? Math.floor((totalSeconds - remaining) /
+      totalSeconds * 100)
+    : 0;
+
+  $('progressText').textContent =
+    `أنجزتِ ${percent}% من جلستك 🌸`;
+
+  document.title = paused
+    ? '⏸ متوقف مؤقتًا | Study Bloom'
+    : `${formatTime(remaining)} | Study Bloom`;
+}
+
+/* TIMER ENGINE */
+
+function stopInterval() {
+  if (interval !== null) {
+    clearInterval(interval);
+    interval = null;
+  }
+}
+
+function tick() {
+  if (paused || finished) return;
+
+  remaining = Math.max(
+    0,
+    Math.ceil((endTime - Date.now()) / 1000)
+  );
+
+  updateDisplay();
+
+  if (remaining <= 0) {
+    completeSession();
+  }
+}
+
+function startTimer() {
+  stopInterval();
+
+  paused = false;
+  endTime = Date.now() + remaining * 1000;
+
+  $('pause').textContent = '⏸ إيقاف مؤقت';
+
+  updateDisplay();
+
+  interval = setInterval(tick, 200);
+}
+
+/* START SESSION */
+
+function startSession() {
+  const hText = $('hours').value.trim();
+  const mText = $('minutes').value.trim();
+  const sText = $('seconds').value.trim();
+
+  const h = Number(hText);
+  const m = Number(mText);
+  const s = Number(sText);
+
+  if (
+    hText === '' || mText === '' || sText === '' ||
+    !Number.isInteger(h) ||
+    !Number.isInteger(m) ||
+    !Number.isInteger(s) ||
+    h < 0 || h > 23 ||
+    m < 0 || m > 59 ||
+    s < 0 || s > 59
+  ) {
+    alert('اختاري ساعات ودقائق وثواني صحيحة 💗');
+    return;
+  }
+
+  const duration = h * 3600 + m * 60 + s;
+
+  if (duration <= 0) {
+    alert('اختاري مدة أكبر من صفر 🌷');
+    return;
+  }
+
+  finished = false;
+  paused = false;
+
+  totalSeconds = duration;
+  remaining = duration;
+
+  $('celebration').classList.remove('show');
+  $('setup').style.display = 'none';
+  $('timerCard').classList.add('show');
+
+  $('activeSubject').textContent = selectedSubject;
+
+  startTimer();
+}
+
+/* PAUSE / RESUME */
+
+function togglePause() {
+  if (finished) return;
+
+  if (!paused) {
+    tick();
+
+    if (finished) return;
+
+    paused = true;
+    stopInterval();
+
+    $('pause').textContent = '▶ استكمال';
+    $('progressText').textContent =
+      'خذي نفسًا عميقًا، ثم واصلي 💗';
+
+    document.title = '⏸ متوقف مؤقتًا | Study Bloom';
+
+  } else {
+    startTimer();
+  }
+}
+
+/* RESET */
+
+function resetTimer() {
+  if (totalSeconds <= 0) return;
+
+  finished = false;
+  remaining = totalSeconds;
+
+  $('celebration').classList.remove('show');
+
+  startTimer();
+}
+
+/* FINISH */
+
+function completeSession() {
+  if (finished) return;
+
+  finished = true;
+  paused = false;
+  remaining = 0;
+
+  stopInterval();
+  updateDisplay();
+
+  $('congrats').textContent =
+    `أكملتِ جلسة ${selectedSubject} بنجاح! ` +
+    'استمري في التقدم، أنتِ قادرة على المزيد 💗';
+
+  $('celebration').classList.add('show');
+
+  celebrate();
+  playSound();
+
+  document.title = '🎉 برافو عليكِ! | Study Bloom';
+
+  if (navigator.vibrate) {
+    navigator.vibrate([150, 100, 150]);
+  }
+}
+
+/* CELEBRATION EFFECTS */
+
+function celebrate() {
+  const shapes = [
+    '💗', '🌸', '✨', '🎀', '⭐', '💖'
+  ];
+
+  for (let i = 0; i < 55; i++) {
+    const item = document.createElement('div');
+
+    item.className = 'confetti';
+
+    item.textContent =
+      shapes[Math.floor(Math.random() * shapes.length)];
+
+    item.style.left = Math.random() * 100 + 'vw';
+
+    item.style.fontSize =
+      (12 + Math.random() * 18) + 'px';
+
+    item.style.animationDuration =
+      (2.2 + Math.random() * 2.5) + 's';
+
+    item.style.animationDelay =
+      Math.random() * 0.8 + 's';
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 6000);
+  }
+}
+
+function playSound() {
+  try {
+    const AudioClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioClass) return;
+
+    const audio = new AudioClass();
+
+    [523.25, 659.25, 783.99].forEach((freq, index) => {
+      const start = audio.currentTime + index * 0.18;
+
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(
+        0.12, start + 0.03
+      );
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001, start + 0.25
+      );
+
+      osc.connect(gain);
+      gain.connect(audio.destination);
+
+      osc.start(start);
+      osc.stop(start + 0.3);
+    });
+
+    setTimeout(() => {
+      audio.close().catch(() => {});
+    }, 1500);
+
+  } catch (error) {
+    // الصوت اختياري.
+  }
+}
+
+/* NEW SESSION */
+
+function newSession() {
+  stopInterval();
+
+  finished = false;
+  paused = false;
+  remaining = 0;
+  totalSeconds = 0;
+
+  $('celebration').classList.remove('show');
+  $('timerCard').classList.remove('show');
+
+  $('setup').style.display = 'block';
+
+  $('hours').value = 0;
+  $('minutes').value = 25;
+  $('seconds').value = 0;
+
+  document.title = 'Study Bloom Morocco 🎀';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* BACK TO SETUP */
+
+function goBack() {
+  stopInterval();
+
+  finished = false;
+  paused = false;
+
+  $('timerCard').classList.remove('show');
+  $('setup').style.display = 'block';
+
+  document.title = 'Study Bloom Morocco 🎀';
+}
+
+/* EVENTS */
+
+$('start').addEventListener('click', startSession);
+$('pause').addEventListener('click', togglePause);
+$('reset').addEventListener('click', resetTimer);
+$('back').addEventListener('click', goBack);
+$('newSession').addEventListener('click', newSession);
+</script>
+
+</body>
+</html>
